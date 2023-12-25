@@ -11,7 +11,7 @@ export const Header = () => {
   const { isLoading, user } = useUser();
 
   return (
-    <header className="flex min-h-[74px] items-center justify-between border-b border-b-white p-5">
+    <header className="flex min-h-[74px] flex-col items-center justify-between gap-2 border-b border-b-white p-5 md:flex-row">
       <Link href="/">
         <Image
           src="/vercel.svg"
