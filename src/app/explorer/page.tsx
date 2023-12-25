@@ -1,7 +1,9 @@
 import { NextPage } from "next";
-import React from "react";
+import React, { Suspense } from "react";
 
-import { LooList, Pagination } from "./components";
+import { Loader } from "@/components";
+
+import { LooDetails, LooList, Pagination } from "./components";
 import { getLoos } from "./services";
 
 type Props = {
@@ -13,7 +15,7 @@ type Props = {
 
 const Explorer: NextPage<Props> = async ({ searchParams }) => {
   const currentPage = Number(searchParams?.page) || 1;
-  const looId = searchParams?.loo || ""; // TODO: pass into the second column
+  const looId = searchParams?.loo || "";
 
   const loosData = await getLoos(currentPage);
 
@@ -30,7 +32,16 @@ const Explorer: NextPage<Props> = async ({ searchParams }) => {
           <p>No loos were found</p>
         )}
       </section>
-      <section className="flex flex-col"></section>
+      <section className="order-first flex flex-col md:order-2">
+        <Suspense
+          key={looId}
+          fallback={
+            <Loader className="mt-5 h-10 w-10 self-center text-purple-700" />
+          }
+        >
+          <LooDetails id={looId} />
+        </Suspense>
+      </section>
     </>
   );
 };
