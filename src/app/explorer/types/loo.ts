@@ -1,7 +1,7 @@
 export type LooBase = {
   id: string;
   name: string;
-  area: { name: string }[] | null;
+  area: { name: string }[];
 };
 
 export interface Loo extends LooBase {

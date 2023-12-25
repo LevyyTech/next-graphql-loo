@@ -19,7 +19,7 @@ const Home: NextPage = () => {
         {isLoading && <Loader className="h-10 w-10 text-purple-700" />}
         {!isLoading && user && (
           <Link
-            href="/" // TODO: add page link when created
+            href="/explorer"
             className="rounded-lg border border-purple-900 bg-purple-700 px-4 py-2 font-semibold text-white"
           >
             Start Exploring
