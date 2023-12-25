@@ -11,9 +11,11 @@ const Home: NextPage = () => {
   const { isLoading, user } = useUser();
 
   return (
-    <main className="mx-auto grid min-h-screen max-w-7xl grid-cols-2 gap-5 p-20">
-      <section className="flex flex-col items-center justify-center gap-9">
-        <h1 className="text-center text-4xl">Welcome to the Loo explorer</h1>
+    <main className="mx-auto grid min-h-screen max-w-7xl grid-cols-1 grid-rows-2 gap-5 p-4 md:grid-cols-2 md:grid-rows-1 md:p-10 lg:p-20">
+      <section className="flex flex-col items-center justify-start gap-9 md:justify-center">
+        <h1 className="text-center text-4xl md:text-2xl lg:text-4xl">
+          Welcome to the Loo explorer
+        </h1>
         {isLoading && <Loader className="h-10 w-10 text-purple-700" />}
         {!isLoading && user && (
           <Link
@@ -27,7 +29,7 @@ const Home: NextPage = () => {
           <AuthButton type="login" className="px-4 py-2 text-xl" />
         )}
       </section>
-      <section className="flex items-center justify-center">
+      <section className="order-first flex items-center justify-center md:order-2">
         <Image
           src="/img/loo.png"
           alt="loo"
